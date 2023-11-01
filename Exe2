@@ -1,0 +1,45 @@
+ static void Main()
+ {
+     string cpf, telefone, cpfPesquisa, telefoneEncontrado;
+
+     Hashtable agenda = new Hashtable();
+
+     Console.WriteLine("Digite até 5 CPFs e o telefone de seus pertencentes:");
+
+     for (int i = 1; i <= 5; i++)
+     {
+         Console.Write("CPF: ");
+         cpf = Console.ReadLine();
+
+         Console.Write("Telefone: ");
+         telefone = Console.ReadLine();
+
+         agenda[cpf] = telefone;
+
+         Console.WriteLine("Cadastro realizado com sucesso!");
+     }
+
+     Console.WriteLine("Dados cadastrados:");
+     foreach (DictionaryEntry entry in agenda)
+     {
+         cpf = (string)entry.Key;
+         telefone = (string)entry.Value;
+
+         Console.WriteLine($"CPF: {cpf}, Telefone: {telefone}");
+     }
+
+     Console.WriteLine("Digite um CPF para pesquisar o telefone:");
+     cpfPesquisa = Console.ReadLine();
+
+     if (agenda.ContainsKey(cpfPesquisa))
+     {
+         telefoneEncontrado = (string)agenda[cpfPesquisa];
+         Console.WriteLine($"Telefone encontrado : {telefoneEncontrado}");
+     }
+     else
+     {
+         Console.WriteLine("CPF não encontrado na agenda.");
+     }
+
+     Console.ReadLine();
+ }
